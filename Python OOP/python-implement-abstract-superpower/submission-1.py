@@ -1,0 +1,58 @@
+from abc import ABC, abstractmethod
+from typing import final, override
+
+# TODO: Implement Superpower class
+class Superpower(ABC):
+    def __init__(self, name: str, power_level: int) -> None:
+        self.name: str = name
+        self.power_level: int = power_level
+        self.is_active = False
+    
+    def get_power_level(self) -> int:
+        return self.power_level
+
+    @abstractmethod
+    def activate(self):
+        pass
+
+    @abstractmethod
+    def deactivate(self):
+        pass
+
+
+# Don't modify the following code
+@final
+class LaserBeam(Superpower):
+    @override
+    def activate(self) -> None:
+        self.is_active = True
+        print(f"{self.name} activated!")
+        
+    @override
+    def deactivate(self) -> None:
+        self.is_active = False
+        print(f"{self.name} deactivated!")
+
+@final
+class SuperStrength(Superpower):
+    @override
+    def activate(self) -> None:
+        self.is_active = True
+        print(f"{self.name} activated!")
+        
+    @override
+    def deactivate(self) -> None:
+        self.is_active = False
+        print(f"{self.name} deactivated!")
+
+laser_beam = LaserBeam("Laser Beam", 10)
+super_strength = SuperStrength("Super Strength", 8)
+
+print(laser_beam.get_power_level())
+print(super_strength.get_power_level())
+
+laser_beam.activate()
+super_strength.activate()
+
+laser_beam.deactivate()
+super_strength.deactivate()
